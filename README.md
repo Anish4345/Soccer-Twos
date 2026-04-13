@@ -1,11 +1,11 @@
-# ⚽ Soccer Twos — 3D Multi-Agent Simulation
+# Soccer Twos — 3D Multi-Agent Simulation
 
 A **2v2 multi-agent soccer simulation** built entirely in Python using `pygame`.  
 Inspired by the [Unity ML-Agents Soccer Twos](https://github.com/Unity-Technologies/ml-agents) environment, this project recreates the game logic and renders it in a fully interactive **3D perspective view** — with zero OpenGL or external 3D libraries.
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 | Property | Details |
 |---|---|
@@ -21,7 +21,7 @@ This project was built as part of a **Final Round Task Assignment** that require
 
 ---
 
-## 🎮 Game Rules
+## Game Rules
 
 - **Teams:** Team Alpha (green) vs Team Beta (red) — 2 agents per team
 - **Goal:** Get the ball into the opponent's goal; defend your own
@@ -31,7 +31,7 @@ This project was built as part of a **Final Round Task Assignment** that require
 
 ---
 
-## 🤖 Agent Design
+## Agent Design
 
 Agents use **rule-based AI** (not reinforcement learning). Each agent has a role and a simple decision loop:
 
@@ -58,7 +58,7 @@ Each agent tracks one of three states displayed as a colour dot above their head
 
 ---
 
-## 🧱 Architecture
+## Architecture
 
 ```
 Soccer_Twos.ipynb
@@ -91,7 +91,7 @@ Soccer_Twos.ipynb
 
 ---
 
-## 🖥️ Controls
+## Controls
 
 | Input | Action |
 |---|---|
@@ -103,7 +103,7 @@ Soccer_Twos.ipynb
 
 ---
 
-## ⚙️ Environment Specification
+## Environment Specification
 
 Matches the Unity ML-Agents Soccer Twos parameters:
 
@@ -121,7 +121,7 @@ Matches the Unity ML-Agents Soccer Twos parameters:
 
 ---
 
-## 🚀 Installation & Running
+## Installation & Running
 
 ### 1. Install dependency
 
@@ -144,7 +144,7 @@ python Soccer_Twos.py
 
 ---
 
-## 📁 File Structure
+## File Structure
 
 ```
 Soccer-Twos/
@@ -155,7 +155,7 @@ Soccer-Twos/
 
 ---
 
-## 🔑 Key Implementation Details
+## Key Implementation Details
 
 ### 3D Rendering (No OpenGL)
 The entire 3D view is built using a **hand-rolled perspective projection**:
@@ -173,7 +173,7 @@ The HUD displays a running log of goals, episode results (win/loss/draw), and cu
 
 ---
 
-## 📊 HUD Display
+## HUD Display
 
 ```
 ALPHA  2  :  1  BETA
@@ -186,7 +186,7 @@ Ep 04   Step 0847/1200   Wins  A:2  B:1  D:0
 
 ---
 
-## 🧩 Comparison with Unity ML-Agents Soccer Twos
+## Comparison with Unity ML-Agents Soccer Twos
 
 | Feature | Unity ML-Agents | This Project |
 |---|---|---|
@@ -200,7 +200,7 @@ Ep 04   Step 0847/1200   Wins  A:2  B:1  D:0
 
 ---
 
-## 📝 References
+## References
 
 - [Unity ML-Agents Toolkit — Soccer Twos](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Learning-Environment-Examples.md#soccer-twos)
 - [Pygame Documentation](https://www.pygame.org/docs/)
@@ -208,7 +208,7 @@ Ep 04   Step 0847/1200   Wins  A:2  B:1  D:0
 
 ---
 
-## 👤 Author
+## Author
 
 Built as part of a Final Round Task Assignment.  
 Implements a complete 2v2 soccer simulation with 3D rendering and autonomous rule-based agents using only the `pygame` library.
