@@ -1,5 +1,3 @@
-3D Antigravity Agent Project
-
 Overview
 
 This project implements a **3D antigravity simulation** where an intelligent agent navigates through obstacles and moves a block toward a goal area. The agent learns to make decisions autonomously using reinforcement learning concepts.
