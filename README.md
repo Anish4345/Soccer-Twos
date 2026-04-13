@@ -207,8 +207,3 @@ Ep 04   Step 0847/1200   Wins  A:2  B:1  D:0
 - Task Assignment: *Final Round — Soccer Twos Multi-Agent Game*
 
 ---
-
-## Author
-
-Built as part of a Final Round Task Assignment.  
-Implements a complete 2v2 soccer simulation with 3D rendering and autonomous rule-based agents using only the `pygame` library.
