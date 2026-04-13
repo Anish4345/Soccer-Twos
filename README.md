@@ -1,40 +1,66 @@
-Soccer Twos — 3D Multi-Agent Simulation
-A 2v2 multi-agent soccer simulation built entirely in Python using pygame.
-Inspired by the Unity ML-Agents Soccer Twos environment, this project recreates the game logic and renders it in a fully interactive 3D perspective view — with zero OpenGL or external 3D libraries.
+# ⚽ Soccer Twos — 3D Multi-Agent Simulation
 
-Project Overview
-PropertyDetailsTypeRule-Based Multi-Agent SimulationEnvironment2v2 Soccer (Team Alpha vs Team Beta)RenderingHand-rolled painter's-algorithm 3D → 2D projectionDependencypygame onlyPlatformPython 3.x, Jupyter Notebook / .py script
-This project was built as part of a Final Round Task Assignment that required:
+A **2v2 multi-agent soccer simulation** built entirely in Python using `pygame`.  
+Inspired by the [Unity ML-Agents Soccer Twos](https://github.com/Unity-Technologies/ml-agents) environment, this project recreates the game logic and renders it in a fully interactive **3D perspective view** — with zero OpenGL or external 3D libraries.
 
-Creating a game environment modelled after the Unity ML-Agents Soccer Twos spec
-Developing agents that can play the game autonomously
+---
 
+## 📌 Project Overview
 
-Game Rules
+| Property | Details |
+|---|---|
+| **Type** | Rule-Based Multi-Agent Simulation |
+| **Environment** | 2v2 Soccer (Team Alpha vs Team Beta) |
+| **Rendering** | Hand-rolled painter's-algorithm 3D → 2D projection |
+| **Dependency** | `pygame` only |
+| **Platform** | Python 3.x, Jupyter Notebook / `.py` script |
 
-Teams: Team Alpha (green) vs Team Beta (red) — 2 agents per team
-Goal: Get the ball into the opponent's goal; defend your own
-Episode length: 1200 steps per episode
-Scoring: Goals are tracked per episode; wins, losses, and draws are recorded across episodes
-Reset: Ball and agents reset to starting positions after every goal or episode end
+This project was built as part of a **Final Round Task Assignment** that required:
+- Creating a game environment modelled after the Unity ML-Agents Soccer Twos spec
+- Developing agents that can play the game autonomously
 
+---
 
-Agent Design
-Agents use rule-based AI (not reinforcement learning). Each agent has a role and a simple decision loop:
-Roles
-RoleBehaviourStrikerAlways chases the ball; attacks the opponent's goal when closeDefenderHolds a weighted midpoint between the ball and own goal
-State Machine
+## 🎮 Game Rules
+
+- **Teams:** Team Alpha (green) vs Team Beta (red) — 2 agents per team
+- **Goal:** Get the ball into the opponent's goal; defend your own
+- **Episode length:** 1200 steps per episode
+- **Scoring:** Goals are tracked per episode; wins, losses, and draws are recorded across episodes
+- **Reset:** Ball and agents reset to starting positions after every goal or episode end
+
+---
+
+## 🤖 Agent Design
+
+Agents use **rule-based AI** (not reinforcement learning). Each agent has a role and a simple decision loop:
+
+### Roles
+| Role | Behaviour |
+|---|---|
+| **Striker** | Always chases the ball; attacks the opponent's goal when close |
+| **Defender** | Holds a weighted midpoint between the ball and own goal |
+
+### State Machine
 Each agent tracks one of three states displayed as a colour dot above their head:
-StateColourMeaningchaseGreyMoving toward the ballattackYellowClose to ball, driving toward opponent's goalsupportBlueDefending — holding position near own goal
-AI Logic (agent_ai)
 
-Determine which teammate is nearest to the ball
-If nearest (or striker role): chase ball → switch to attack mode when close
-If not nearest (defender role): hold a support position between ball and own goal
-Compute angle error → rotate toward target → move forward or reverse
+| State | Colour | Meaning |
+|---|---|---|
+| `chase` | Grey | Moving toward the ball |
+| `attack` | Yellow | Close to ball, driving toward opponent's goal |
+| `support` | Blue | Defending — holding position near own goal |
 
+### AI Logic (`agent_ai`)
+1. Determine which teammate is **nearest** to the ball
+2. If nearest (or striker role): chase ball → switch to attack mode when close
+3. If not nearest (defender role): hold a support position between ball and own goal
+4. Compute angle error → rotate toward target → move forward or reverse
 
-Architecture
+---
+
+## 🧱 Architecture
+
+```
 Soccer_Twos.ipynb
 │
 ├── Camera                  # 3D orbit camera with perspective projection
@@ -61,59 +87,128 @@ Soccer_Twos.ipynb
 │   └── check_goal()        # Detect when ball crosses goal line
 │
 └── main()                  # Game loop: event handling → simulation → render
+```
 
-Controls
-InputActionLeft Mouse DragOrbit camera around fieldScroll WheelZoom in / outSPACEPause / Resume simulationRStart a new gameESCQuit
+---
 
-Environment Specification
+## 🖥️ Controls
+
+| Input | Action |
+|---|---|
+| **Left Mouse Drag** | Orbit camera around field |
+| **Scroll Wheel** | Zoom in / out |
+| **SPACE** | Pause / Resume simulation |
+| **R** | Start a new game |
+| **ESC** | Quit |
+
+---
+
+## ⚙️ Environment Specification
+
 Matches the Unity ML-Agents Soccer Twos parameters:
-ParameterValueField size500 × 300 unitsGoal height90 unitsAgent radius9.0 unitsBall radius7.5 unitsMax steps/episode1200FPS60Window1280 × 720Teams2 (Alpha, Beta)Agents per team2 (1 Striker + 1 Defender)
 
-Installation & Running
-1. Install dependency
-bashpip install pygame
-2. Run from Jupyter Notebook
-Open Soccer_Twos.ipynb and run all cells.
-3. Run as a Python script
+| Parameter | Value |
+|---|---|
+| Field size | 500 × 300 units |
+| Goal height | 90 units |
+| Agent radius | 9.0 units |
+| Ball radius | 7.5 units |
+| Max steps/episode | 1200 |
+| FPS | 60 |
+| Window | 1280 × 720 |
+| Teams | 2 (Alpha, Beta) |
+| Agents per team | 2 (1 Striker + 1 Defender) |
+
+---
+
+## 🚀 Installation & Running
+
+### 1. Install dependency
+
+```bash
+pip install pygame
+```
+
+### 2. Run from Jupyter Notebook
+
+Open `Soccer_Twos.ipynb` and run all cells.
+
+### 3. Run as a Python script
+
 If you export the notebook:
-bashjupyter nbconvert --to script Soccer_Twos.ipynb
-python Soccer_Twos.py
 
-File Structure
+```bash
+jupyter nbconvert --to script Soccer_Twos.ipynb
+python Soccer_Twos.py
+```
+
+---
+
+## 📁 File Structure
+
+```
 Soccer-Twos/
 │
 ├── Soccer_Twos.ipynb       # Main simulation notebook
 └── README.md               # This file
+```
 
-Key Implementation Details
-3D Rendering (No OpenGL)
-The entire 3D view is built using a hand-rolled perspective projection:
+---
 
-A Camera class manages orbital rotation (theta), elevation (phi), and zoom
-World coordinates are projected to screen using a view-space transform
-Objects are depth-sorted using the painter's algorithm (back-to-front draw order) to handle occlusion correctly
+## 🔑 Key Implementation Details
 
-Physics
+### 3D Rendering (No OpenGL)
+The entire 3D view is built using a **hand-rolled perspective projection**:
+- A `Camera` class manages orbital rotation (theta), elevation (phi), and zoom
+- World coordinates are projected to screen using a view-space transform
+- Objects are depth-sorted using the **painter's algorithm** (back-to-front draw order) to handle occlusion correctly
 
-Ball friction: velocity multiplied by 0.994 per step
-Wall collisions: elastic bounce with 0.75 damping
-Ball-agent collision: impulse-based response with a goal-directed kick bias — when an agent touches the ball, a force component pushes the ball toward the opponent's goal
+### Physics
+- Ball friction: velocity multiplied by `0.994` per step
+- Wall collisions: elastic bounce with `0.75` damping
+- Ball-agent collision: impulse-based response with a **goal-directed kick bias** — when an agent touches the ball, a force component pushes the ball toward the opponent's goal
 
-Multi-Episode Tracking
+### Multi-Episode Tracking
 The HUD displays a running log of goals, episode results (win/loss/draw), and cumulative stats across all episodes in the current session.
 
-HUD Display
+---
+
+## 📊 HUD Display
+
+```
 ALPHA  2  :  1  BETA
 Ep 04   Step 0847/1200   Wins  A:2  B:1  D:0
 ─────────────────────────────────────────────
 [Ep03 S0612] GOAL! ALPHA → 2-1
 [Ep03 S0000] GOAL! BETA  → 1-1
+...
+```
 
-Comparison with Unity ML-Agents Soccer Twos
-FeatureUnity ML-AgentsThis ProjectAgents4 (2v2)4 (2v2) Agent controlPPO (trained RL)Rule-based AIObservation space336-dim ray-castGeometric computationActions3 discrete branchesForward/back + rotate3D renderingUnity EngineCustom pygame renderer Reward functionTime-penalty basedWin/loss trackingDependencyUnity + ML-Agentspygame only 
+---
 
-References
+## 🧩 Comparison with Unity ML-Agents Soccer Twos
 
-Unity ML-Agents Toolkit — Soccer Twos
-Pygame Documentation
-Task Assignment: Final Round — Soccer Twos Multi-Agent Game
+| Feature | Unity ML-Agents | This Project |
+|---|---|---|
+| Agents | 4 (2v2) | 4 (2v2) ✅ |
+| Agent control | PPO (trained RL) | Rule-based AI |
+| Observation space | 336-dim ray-cast | Geometric computation |
+| Actions | 3 discrete branches | Forward/back + rotate |
+| 3D rendering | Unity Engine | Custom pygame renderer ✅ |
+| Reward function | Time-penalty based | Win/loss tracking |
+| Dependency | Unity + ML-Agents | `pygame` only ✅ |
+
+---
+
+## 📝 References
+
+- [Unity ML-Agents Toolkit — Soccer Twos](https://github.com/Unity-Technologies/ml-agents/blob/main/docs/Learning-Environment-Examples.md#soccer-twos)
+- [Pygame Documentation](https://www.pygame.org/docs/)
+- Task Assignment: *Final Round — Soccer Twos Multi-Agent Game*
+
+---
+
+## 👤 Author
+
+Built as part of a Final Round Task Assignment.  
+Implements a complete 2v2 soccer simulation with 3D rendering and autonomous rule-based agents using only the `pygame` library.
