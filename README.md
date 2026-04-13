@@ -190,13 +190,13 @@ Ep 04   Step 0847/1200   Wins  A:2  B:1  D:0
 
 | Feature | Unity ML-Agents | This Project |
 |---|---|---|
-| Agents | 4 (2v2) | 4 (2v2) ✅ |
+| Agents | 4 (2v2) | 4 (2v2)  |
 | Agent control | PPO (trained RL) | Rule-based AI |
 | Observation space | 336-dim ray-cast | Geometric computation |
 | Actions | 3 discrete branches | Forward/back + rotate |
-| 3D rendering | Unity Engine | Custom pygame renderer ✅ |
+| 3D rendering | Unity Engine | Custom pygame renderer  |
 | Reward function | Time-penalty based | Win/loss tracking |
-| Dependency | Unity + ML-Agents | `pygame` only ✅ |
+| Dependency | Unity + ML-Agents | `pygame` only  |
 
 ---
 
